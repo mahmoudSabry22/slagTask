@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -48,7 +49,7 @@ class CategoryController extends Controller
             'slag'  => 'required|string'
         ]);
 
-
+         $data['slag'] = str::slug($data['slag'],'-');
         $pr = Category::create($data);
 
         return redirect()->route('category.index');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     /**
@@ -48,7 +49,7 @@ class ProductController extends Controller
             'Category_id'  => 'required|integer'
         ]);
 
-
+$data['name'] = str::slug($data['name'],'-');
         $pr = Product::create($data);
 
         return redirect()->route('product.index');
@@ -60,14 +61,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
-         $pro = Product::where('id',$id)->with('theCategory')->first();
+         $pro = Product::where('name',$name)->with('theCategory')->first();
         
         if($pro){
 
             return view('Product.show',[
-                'title' => "Show Products " . ' : ' . $pro->name,
+                'title' => $pro->name,
                 'show' => $pro
             ]); 
         }
