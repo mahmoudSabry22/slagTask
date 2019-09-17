@@ -53,7 +53,7 @@
 
                         <div class="col-md-6">
                             <strong>belongs To Category : </strong>
-                          <a href="{{route('category.show',[$show->theCategory->slag])}}">  {{ $show->theCategory->name }}</a>
+                          <a href="{{route('category.show',[$show->category->slag])}}">  {{ $show->category->name }}</a>
                             <br><hr>
                         </div>
 

@@ -27,7 +27,7 @@
                                 
                                 <td>{{ ($i->name) }}</td>
                                <td>
-                                <a href="{{route('category.show',[$i->theCategory->slag])}}">  {{ $i->theCategory->name }}</a>
+                                <a href="{{route('category.show',[$i->category->slag])}}">  {{ $i->category->name }}</a>
                               </td>
                                 
                                 <td>

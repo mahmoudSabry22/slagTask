@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
-use Illuminate\Support\Str;
+
 class ProductController extends Controller
 {
     /**
@@ -46,10 +46,10 @@ class ProductController extends Controller
     {
         $data = $this->validate($request,[
             'name'         => 'required|string|max:15',
-            'Category_id'  => 'required|integer'
+            'category_id'  => 'required|integer'
         ]);
 
-$data['name'] = str::slug($data['name'],'-');
+$data['name'] = str_slug($data['name'],'-');
         $pr = Product::create($data);
 
         return redirect()->route('product.index');
@@ -63,7 +63,7 @@ $data['name'] = str::slug($data['name'],'-');
      */
     public function show($name)
     {
-         $pro = Product::where('name',$name)->with('theCategory')->first();
+         $pro = Product::where('name',$name)->with('category')->first();
         
         if($pro){
 

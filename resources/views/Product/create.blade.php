@@ -37,12 +37,12 @@
                                 <label class="col-md-2 control-label">Categories <span style="color:red">*</span></label>
                                 <div class="col-md-6">
 
-                                    <select class="form-control" name="Category_id" >
+                                    <select class="form-control" name="category_id" >
                                         <option value="0" {{ old('parent') == 'parent_id' ? 'selected' : '' }}>Select Category</option>
 
                                         @foreach($prods as $parent )
 
-                                        <option value="{{ $parent->id }}" {{ $parent->name == 'Category_id' ? 'selected' : '' }}>{{ $parent->name }}</option>
+                                        <option value="{{ $parent->id }}" {{ $parent->name == 'category_id' ? 'selected' : '' }}>{{ $parent->name }}</option>
                                         @endforeach
                                     </select>
 
